@@ -63,8 +63,6 @@ const currentUser = new Subscriber('0001', 'Fabricio Mamani', 'FabsVMR', 'fabric
 // Main function
 
 userInfo.innerText = currentUser.getInfo();
-userIcon.addEventListener('click', function() {
-})
 
 postFile.addEventListener('input', function() {
     const imageFile = postFile.files;
