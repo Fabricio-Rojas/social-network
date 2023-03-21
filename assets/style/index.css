@@ -101,17 +101,6 @@ li a:active {
     margin-right: 10px;
 }
 
-#contact-info {
-    color: #fff;
-    height: 40px;
-    width: 420px;
-    padding: 5px 10px;
-    margin: 0 10px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.15);
-    cursor: pointer;
-}
-
 #post-btn {
     text-align: center;
     height: 40px;
@@ -135,18 +124,17 @@ li a:active {
     margin: 25px auto 0;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px 10px;
+    justify-content: center;
+    gap: 15px;
     grid-auto-flow: row;
 }
 
-.contact {
-    width: 255px;
-    height: 110px;
+.post {
+    width: 650px;
+    min-height: 110px;
+    height: fit-content;
     padding: 10px;
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    cursor: pointer;
 }
