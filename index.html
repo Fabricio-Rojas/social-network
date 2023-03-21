@@ -8,6 +8,7 @@
         <meta name="keywords" content="html, css, web, web development, seo">
         <title>Social Network</title>
         <link rel="shortcut icon" href="./assets/image/main white finished.png?v=2" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="./assets/style/index.css" media="all">
         <script src="./assets/script/index.js" defer></script>
     </head>
@@ -32,8 +33,9 @@
         <main>
             <div class="container">
                 <div class="inputs">
-                    <textarea name="post" id="post-txt" cols="30" rows="10" placeholder="What's New?"></textarea>
+                    <textarea name="post" id="post-txt" rows="5" placeholder="What's New?"></textarea>
                     <div class="bottom-bar">
+                        <label for="post-file" class="post-file"><i class="fa-solid fa-image"></i><span></span></label>
                         <input type="file" name="post" id="post-file" accept="image/png, image/jpeg">
                         <button id="post-btn">Post</button>
                     </div>

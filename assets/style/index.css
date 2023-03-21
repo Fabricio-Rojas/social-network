@@ -62,9 +62,43 @@ li a:active {
 
 /* Post input area */
 .inputs {
-    margin-top: 30px;
+    width: 650px;
+    margin: 30px auto 0;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#post-txt {
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    padding: 10px;
+    background-color: transparent;
+    resize: none;
+    color: #fff;
+}
+
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+#post-file {
+    display: none;
+}
+
+.post-file {
+    padding-top: 8px;
+    color: #C1C0C5;
+    cursor: pointer;
+}
+
+.post-file i {
+    font-size: 30px;
+    margin-right: 10px;
 }
 
 #contact-info {
@@ -83,7 +117,6 @@ li a:active {
     height: 40px;
     width: 100px;
     padding: 5px 10px;
-    margin: 0 10px;
     border-radius: 5px;
     background-color: #1D9BF0;
     font-size: 17px;
