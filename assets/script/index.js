@@ -3,6 +3,7 @@
 // Declaring Elements
 
 const userIcon = document.querySelector('.user-icon');
+const userInfo = document.querySelector('.dropdown');
 
 const postTxt = document.querySelector('#post-txt');
 const postFile = document.querySelector('#post-file');
@@ -31,7 +32,8 @@ class User {
     get email() {return this.#email}
 
     getInfo() {
-        
+        let result = `Id: ${this.#id}\n Name: ${this.#name}\nUser Name: ${this.#userName}\nEmail: ${this.#email}`;
+        return result;
     }
 };
 
@@ -45,16 +47,23 @@ class Subscriber extends User {
         this.#groups = groups;
         this.#canMonetize = canMonetize;
     }
-
+    
     get pages() {return this.#pages}
     get groups() {return this.#groups}
     get canMonetize() {return this.#canMonetize}
+
+    getInfo() {
+        let info = `${super.getInfo()}\nPages: ${this.#pages}\nGroups: ${this.#groups}\n Can Monetize: ${this.#canMonetize}`;
+        return info;
+    }
 };
+
+const currentUser = new Subscriber('0001', 'Fabricio Mamani', 'FabsVMR', 'fabriciovmamanir@gmail.com', ['Game Design', 'AI'], ['Software Developers', 'MITT'], true);
 
 // Main function
 
+userInfo.innerText = currentUser.getInfo();
 userIcon.addEventListener('click', function() {
-
 })
 
 postFile.addEventListener('input', function() {
@@ -119,3 +128,5 @@ function addContent(div) {
     fileName.innerHTML = ``;
     postFile.value = '';
 };
+
+

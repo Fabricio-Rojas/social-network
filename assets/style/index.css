@@ -60,6 +60,24 @@ li a:active {
     border-radius: 50%;
 }
 
+.user-icon:focus .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: relative;
+    background-color: #3c3f4b;
+    padding: 10px;
+    min-width: 260px;
+    top: 20px;
+    right: 100px;
+    z-index: 1;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
 /* Post input area */
 .inputs {
     width: 650px;
