@@ -2,107 +2,120 @@
 
 // Declaring Elements
 
-const addBtn = document.querySelector('#contact-add');
-const contactInp = document.querySelector('#contact-info');
-const alertText = document.querySelector('.alert-txt');
+const userIcon = document.querySelector('.user-icon');
+
+const postTxt = document.querySelector('#post-txt');
+const postFile = document.querySelector('#post-file');
+const fileName = document.querySelector('#file-name');
+const postBtn = document.querySelector('#post-btn');
 
 const grid = document.querySelector('.grid');
-const contactCount = document.querySelector('.contact-count');
 
 // Class Definition
 
-class Contact { 
+class User { 
+    #id;
     #name;
-    #city;
+    #userName;
     #email;
-    constructor(name, city, email) {
-        this.name = name;
-        this.city = city;
-        this.email = email;
-    };
-
-    set name(name) {
+    constructor(id, name, userName, email) {
+        this.#id = id;
         this.#name = name;
-    };
-
-    set city(city) {
-        this.#city = city;
-    };
-
-    set email(email) {
+        this.#userName = userName;
         this.#email = email;
-    };
+    }
 
-    get name() {
-        return this.#name;
-    };
+    get id() {return this.#id}
+    get name() {return this.#name}
+    get userName() {return this.#userName}
+    get email() {return this.#email}
 
-    get city() {
-        return this.#city;
-    };
+    getInfo() {
+        
+    }
+};
 
-    get email() {
-        return this.#email; 
-    };
+class Subscriber extends User {
+    #pages;
+    #groups;
+    #canMonetize;
+    constructor(id, name, userName, email, pages, groups, canMonetize) {
+        super(id, name, userName, email)
+        this.#pages = pages;
+        this.#groups = groups;
+        this.#canMonetize = canMonetize;
+    }
+
+    get pages() {return this.#pages}
+    get groups() {return this.#groups}
+    get canMonetize() {return this.#canMonetize}
 };
 
 // Main function
-let contactList = [];
-addBtn.addEventListener('click', function() {
 
-    const contactValues = contactInp.value.split(",");
+userIcon.addEventListener('click', function() {
 
-    if (contactValues.length != 3) {
-        alertText.innerText = 'Please enter valid amount of inputs';
+})
+
+postFile.addEventListener('input', function() {
+    const imageFile = postFile.files;
+    for (let file of imageFile) {
+        fileName.innerHTML = `${file.name}`;
+    }
+});
+
+postBtn.addEventListener('click', function() {
+
+    const textVal = postTxt.value;
+    const imageFile = postFile.files;
+
+    if (textVal.length <= 0 && imageFile.length <= 0) {
         return;
     }
 
-    const contactName = contactValues[0];
-    const contactCity = contactValues[1];
-    const contactEmail = contactValues[2];
-
-    const validMail = /^.*@.*\.([a-z]{2}|[a-z]{3})$/;
-    const valuesValid = (
-        contactName.length > 0 && 
-        contactCity.length > 0 && 
-        validMail.test(contactEmail)
-    );
-
-    if (!valuesValid) {
-        alertText.innerText = 'Please write valid inputs';
-        return;
-    };
-    alertText.innerText = '';
-
-    const newContact = new Contact(contactName, contactCity, contactEmail);
-    contactList.push(newContact);
-
     const newDiv = document.createElement('div');
-    newDiv.classList.add('contact');
-    newDiv.onclick = function() {
-        newDiv.parentNode.removeChild(newDiv);
-        contactList.splice(
-            contactList.indexOf(newContact), contactList.indexOf(newContact)
-        );
-        contactCount.innerText = `Contacts: ${grid.childElementCount}`;
-    };
-    listContacts(newContact, newDiv);
+    newDiv.classList.add('post');
+    
+    addContent(newDiv);
 
     grid.insertBefore(newDiv, grid.firstChild);
 
-    contactCount.innerText = `Contacts: ${grid.childElementCount}`;
+    
 });
 
-function listContacts(contact, div) {
-    let p1 = document.createElement('p');
-    let p2 = document.createElement('p');
-    let p3 = document.createElement('p');
+function addContent(div) {
 
-    p1.innerHTML = `<b>Name:</b> ${contact.name}`
-    p2.innerHTML = `<b>City:</b> ${contact.city}`
-    p3.innerHTML = `<b>Email:</b> ${contact.email}`
+    const postHead = document.createElement('div');
+    postHead.classList.add('post-head');
 
-    div.appendChild(p1);
-    div.appendChild(p2);
-    div.appendChild(p3);
+    const date = new Date();
+    const options = {month: 'short', day: 'numeric', year: 'numeric'};
+    const formattedDate = date.toLocaleDateString('en-US', options);
+
+    postHead.innerHTML = `<div><img src="./assets/image/main white finished.png" alt="user-icon">Fabricio Mamani</div><p>${formattedDate}</p>`;
+
+    div.append(postHead);
+
+    const postBody = document.createElement('div');
+    postBody.classList.add('post-body');
+    postBody.innerText = postTxt.value;
+
+    div.append(postBody);
+
+    if (postFile.files.length > 0) {
+        const file = postFile.files[0];
+        const reader = new FileReader();
+    
+        reader.readAsDataURL(file);
+        
+        reader.addEventListener('load', function() {
+            const image = document.createElement('img');
+            image.src = reader.result;
+            div.append(image);
+        });
+    }
+
+    postTxt.value = '';
+    fileName.innerHTML = ``;
+    postFile.value = '';
 };
