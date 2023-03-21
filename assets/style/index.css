@@ -1,5 +1,6 @@
 @import "./reset.css";
 
+/* Body and Main elements */
 .container {
     width: min(100% - 30px, 1280px);
     margin-inline: auto;
@@ -13,18 +14,53 @@ main {
     padding-bottom: 20px;
 }
 
+/* Header */
+
 header {
     background-color: #272a36;
-    width: 100%;
+}
+
+.heading {
     height: 60px;
+    display: flex;
+    justify-content: space-between;
 }
 
-h1 {
-    color: #fff;
+h2 {
+    font-size: 30px;
+    color: #1D9BF0;
     text-align: center;
-    font-weight: 300;
+    font-weight: 500;
+    line-height: 60px;
 }
 
+nav ul li {
+    float: left;
+    margin-right: 20px;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+li a {
+    color: #fff;
+}
+
+li a:active {
+    color: #1D9BF0;
+}
+
+.user-icon {
+    height: 50px;
+    width: 50px;
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.user-icon img {
+    border-radius: 50%;
+}
+
+/* Post input area */
 .inputs {
     margin-top: 30px;
     display: flex;
@@ -42,31 +78,24 @@ h1 {
     cursor: pointer;
 }
 
-#contact-add {
+#post-btn {
     text-align: center;
     height: 40px;
     width: 100px;
     padding: 5px 10px;
     margin: 0 10px;
     border-radius: 5px;
-    background-color: #009D5D;
+    background-color: #1D9BF0;
     font-size: 17px;
     color: #fff;
     cursor: pointer;
 }
 
-#contact-add:active {
-    border: 2px solid #000;
+#post-btn:active {
+    border: 1px solid #000;
 }
 
-.alert-txt {
-    height: 20px;
-    margin-top: 20px;
-    text-align: center;
-    color: #fff;
-    font-size: 20px;
-}
-
+/* Posts area */
 .grid {
     min-height: 350px;
     width: 1050px;
@@ -87,28 +116,4 @@ h1 {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 5px;
     cursor: pointer;
-}
-
-.contact:first-child {
-    border: 1px solid #009D5D;
-
-}
-
-.contact:hover {
-    border: 1px solid #D44C4E;
-}
-
-.contact:active {
-    border: 1px solid #800;
-}
-
-.contact-count {
-    margin: 40px auto;
-    height: 40px;
-    width: 200px;
-    border-radius: 5px;
-    background-color: #800;
-    color: #fff;
-    text-align: center;
-    line-height: 40px;
 }
